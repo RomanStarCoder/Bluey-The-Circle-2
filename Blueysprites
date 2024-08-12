@@ -1,0 +1,326 @@
+Circle.prototype.draw = function(cam) {
+    // blue color and circle size
+    var view = cam.view(this);
+    
+    if(dbug){
+        
+        g.fill(50, 16, 173, 150);
+        
+        g.rect(this.x, this.y, this.w, this.h);
+        
+        fill(0);
+        text(this.x, 300, 300);
+        text(this.y, 400, 400);
+        
+        
+        
+    }
+    
+    
+    
+    
+    if(view){
+     pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(0, 0, 209);
+    
+//}
+    strokeWeight(2);
+    stroke(8, 0, 209);
+    ellipse(0, 0, view.w+2, view.h+2);
+    fill(255, 255, 255);
+    ellipse(-10, -7, 17, 17);
+    ellipse(10, -7, 17, 17);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    ellipse(-10, -7, 5, 5);
+    ellipse(10, -7, 5, 5);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 2, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123); 
+    popStyle();
+    if(frameCount%300 < 20){
+        noStroke();
+        fill(0, 0, 209);
+        ellipse(-10, -7, 15, 15);
+        ellipse(10, -7, 15, 15);
+    }
+    popMatrix();
+    }
+    if(view && this.emotion === "UP"){
+        pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(0, 0, 209);
+//}
+    strokeWeight(2);
+    stroke(8, 0, 209);
+    ellipse(0, 0, view.w, view.h+10);
+    fill(255, 255, 255);
+    ellipse(-10, -7, 17, 17);
+    ellipse(10, -7, 17, 17);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    ellipse(-10, -9, 5, 5);
+    ellipse(10, -9, 5, 5);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123);  
+    popStyle();
+    if(frameCount%300 < 20){
+        strokeWeight(0);
+        fill(0, 0, 209);
+        ellipse(-10, -7, 15, 15);
+        ellipse(10, -7, 15, 15);
+    }
+    popMatrix();
+    }
+    if(view && this.state === "invince"){
+        pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(0 + sin(frameCount * 20) * 255, 0 + tan(frameCount * 20) * 255, 0 + cos(frameCount * 20) * 255);
+    
+    
+//}
+    strokeWeight(2);
+    stroke(0 + sin(frameCount * 20) * 255, 0 + tan(frameCount * 20) * 255, 0 + cos(frameCount * 20) * 255);
+    ellipse(0, 0, view.w, view.h);
+    fill(255, 255, 255);
+    ellipse(-10, -7, 17, 17);
+    ellipse(10, -7, 17, 17);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    ellipse(-10, -7, 6, 6);
+    ellipse(10, -7, 6, 6);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123); 
+    popStyle();
+    if(frameCount%300 < 20){
+        stroke(0 + sin(frameCount * 20) * 255, 0 + tan(frameCount * 20) * 255, 0 + cos(frameCount * 20) * 255);
+        fill(0 + sin(frameCount * 20) * 255, 0 + tan(frameCount * 20) * 255, 0 + cos(frameCount * 20) * 255);
+        ellipse(-10, -7, 15, 15);
+        ellipse(10, -7, 15, 15);
+    }
+    popMatrix();
+//}
+    }
+    /*
+    if(view && this.emotion === "bouncy"){
+        pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(0, 0, 209);
+//}
+    strokeWeight(2);
+    stroke(8, 0, 209);
+    ellipse(0, 0, view.w+10, view.h);
+    fill(255, 255, 255);
+    ellipse(-10, -7, 15, 15);
+    ellipse(10, -7, 15, 15);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    ellipse(-10, -7, 5, 5);
+    ellipse(10, -7, 5, 5);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    ellipse(0, 13, 20, 6); 
+    popStyle();
+    if(frameCount%300 < 20){
+        fill(0, 0, 209);
+        ellipse(-10, -7, 15, 15);
+        ellipse(10, -7, 15, 15);
+    }
+    popMatrix();
+    }
+    */
+    if(view && this.emotion === "Dead"){
+        if(view){
+     pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(230, 0, 255);
+//}
+    strokeWeight(2);
+    stroke(230, 0, 255);
+    ellipse(0, 0, view.w, view.h);
+    fill(255, 255, 255);
+    ellipse(-7, -7, 15, 15);
+    ellipse(10, -7, 15, 15);
+    textSize(15);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    text("X", -16, -4);
+    text("X", 7, -4);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123);
+    popStyle();
+        }
+    }
+    if(view && this.emotion === "Burns"){
+        
+     pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(173, 3, 3);
+//}
+    strokeWeight(2);
+    stroke(173, 4, 4);
+    ellipse(0, 0, view.w, view.h);
+    fill(255, 255, 255);
+    ellipse(-10, -7, 17, 17);
+    ellipse(10, -7, 17, 17);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    ellipse(-10, -7, 6, 6);
+    ellipse(10, -7, 6, 6);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123); 
+    popStyle();
+    if(frameCount%300 < 20){
+        stroke(173, 4, 4);
+        fill(173, 4, 4);
+        ellipse(-10, -7, 15, 15);
+        ellipse(10, -7, 15, 15);
+    }
+    popMatrix();
+    
+    }
+    if(view && this.emotion === "Stuck"){
+        
+     pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(0, 66, 207);
+//}
+    strokeWeight(2);
+    stroke(8, 68, 207);
+    ellipse(0, 0, view.w, view.h);
+    textSize(15);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    text(">", -13, -4);
+    text("<", 9, -4);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123);
+    popStyle();
+    
+    popMatrix();
+    
+    }
+    if(view && this.emotion === "Bounced"){
+     pushMatrix();
+    translate(view.x+view.w/2,view.y+view.h/2);
+    rotate(this.rot-=10);
+    
+    // Design
+    
+    pushStyle();
+    //{hue(blue);// hue and others
+    saturation(blue);
+    blue(blue);
+    fill(0, 0, 209);
+//}
+    strokeWeight(2);
+    stroke(8, 0, 209);
+    ellipse(0, 0, view.w, view.h);
+    fill(255, 255, 255);
+    ellipse(-10, -7, 15, 15);
+    ellipse(10, -7, 15, 15);
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    ellipse(-10, -7, 5, 5);
+    ellipse(10, -7, 5, 5);
+    fill(0, 255, 217);
+    stroke(0, 255, 217);
+    ellipse(0, 0, 5, 5);
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    arc(4, 8, 20, 20, 0, 123); 
+    popStyle();
+    if(frameCount%300 < 20){
+        stroke(0, 0, 209);
+        fill(0, 0, 209);
+        ellipse(-10, -7, 15, 15);
+        ellipse(10, -7, 15, 15);
+    }
+    popMatrix();
+    }
+    
+    
+};
