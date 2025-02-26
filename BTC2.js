@@ -31893,8 +31893,6 @@ arc(399, 343, 100, 100, 0, 166);
 draw = function(){
     cursor("default");
     if(keys[54]){
-//funny1 = true;
-//scene = "gottaremovethisinthefinalrelease";
     }
     
     if (imgIndex < images.length) {
