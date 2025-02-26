@@ -527,6 +527,105 @@ var new_ = (function() {
 	return obj;
 });
 
+var musicchanged = false;
+
+var storage;
+
+(function() {
+    audio = [];
+    
+    mainDocument = undefined;
+    myDocument = undefined;
+    
+    storage = this.localStorage;
+})();
+
+var getItem = function(key) {
+    if(storage === undefined) {
+        storage = this.localStorage;
+    }
+    return storage.getItem(key);
+};
+var setItem = function(key, value) {
+    if(storage === undefined)  {
+        storage = this.localStorage;
+    }
+    storage.setItem(key, value);
+};
+
+var precacheAudio = function(id, name, src) {
+    var audioObject = {};
+    
+    var audioSource = myDocument[mainDocument[1]]("source");
+    var extension = src.substring(src.lastIndexOf(".") + 1, src.length);
+    
+    switch(extension) {
+        case "mp3":
+            extension = "mpeg";
+            break;
+        case "ogg":
+            extension = "ogg";
+        break;
+        case "wav":
+            extension = "wav";
+        break;
+    }
+    
+    audioSource.type = "audio/" + extension;
+    audioSource.src = src;
+    
+    var object = myDocument[mainDocument[1]]("audio");
+    object.appendChild(audioSource);
+    
+    audioObject.object = object;
+    audioObject.name = name;
+    
+    audio[id] = audioObject;
+};
+
+mainDocument = ["ownerDocument", "createElement"];
+myDocument = this.externals.canvas[mainDocument[0]];   
+
+var playAudio = function(identifier) {
+    if(typeof identifier === "string") {
+        var audioObject;
+        for(var i = 0; i < audio.length; i++) {
+            if(audio[i].name === identifier) {
+                audioObject = audio[i].object;
+                break;
+            }
+        }
+        
+        if(audioObject !== undefined) {
+            //audioObject.currentTime = 0;
+            
+            //audioObject.play();
+        }
+    } else if(typeof identifier === "number") {
+        //if(identifier % 1 === 0) {
+            //if(identifier < audio.length) {
+                audioObject = audio[identifier].object;
+                
+                audioObject.currentTime = 0;
+                
+                
+                if(musicchanged === false){
+                audioObject.play();
+                }
+
+                audioObject.loop = true;
+                if(musicchanged === true){
+                    audioObject.pause();
+                }
+
+                
+            //}
+        //}
+    }
+};
+
+mainDocument = ["ownerDocument", "createElement"];
+myDocument = this.externals.canvas[mainDocument[0]];   
 
 
 var transition = {
@@ -31889,10 +31988,202 @@ arc(399, 343, 100, 100, 0, 166);
 
 
 //} // OLD CODE!
+     
+precacheAudio(0, "DDZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A42%20-%20Desert%20Dunes%20Zone.mp3");
+precacheAudio(1, "EEZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A07%20-%20Crystal%20Coves%20Zone%20Act%201.mp3");
+precacheAudio(2, "EEZ3", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A11%20-%20Crystal%20Coves%20Zone%20Act%202.mp3");
+precacheAudio(3, "RRZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A16%20-%20Rustic%20Ruins%20Zone%20Act%201.mp3");
+precacheAudio(4, "RRZ4", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A17%20-%20Rustic%20Ruins%20Zone%20Act%202.mp3")
+precacheAudio(5, "MMZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A14%20-%20Factory%20Frenzy%20Zone%20Act%201.mp3");
+precacheAudio(6, "MMZ3", "https://ia902301.us.archive.org/7/items/SonicClassic2Soundtrack/A15%20-%20Factory%20Frenzy%20Zone%20Act%202.mp3");
+precacheAudio(7, "DDZ3", "DDZ3.mp3");
+precacheAudio(8, "WWZ123", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/C33%20-%20Wood%20Zone.mp3");
+precacheAudio(9, "CCZ1", "https://ia902301.us.archive.org/7/items/SonicClassic2Soundtrack/A20%20-%20Carnival%20Chaos%20Zone%20Act%201.mp3");
+precacheAudio(10, "CCZ2", "https://dn720309.ca.archive.org/0/items/SonicClassic2Soundtrack/A21a%20-%20Carnival%20Chaos%20Zone%20Act%202.mp3");
+precacheAudio(11, "CCZ3", "https://dn720309.ca.archive.org/0/items/SonicClassic2Soundtrack/A21b%20-%20Carnival%20Chaos%20Zone%20Act%202%20%28Old%29.mp3");
+precacheAudio(12, "AAZ123", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/C35%20-%20Cyber%20City%20Zone.mp3");
+precacheAudio(13, "TTZ1+2", "https://ia902301.us.archive.org/7/items/SonicClassic2Soundtrack/A24%20-%20Murky%20Mines%20Zone%20Act%201.mp3");
+precacheAudio(14, "TTZ3", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A25%20-%20Murky%20Mines%20Zone%20Act%202.mp3");
+precacheAudio(100, "Jump", "");
+precacheAudio(15, "IIZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A18%20-%20Frozen%20Fractal%20Zone%20Act%201.mp3");
+precacheAudio(30, "BTC1GGZ", "https://ia902301.us.archive.org/7/items/SonicClassic2Soundtrack/A39a%20-%20Hazel%20Hills%20Zone.mp3");
+precacheAudio(31, "BTC1RRZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A40%20-%20Crystal%20Caverns%20Zone.mp3");
+precacheAudio(32, "BTC1LLZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A41%20-%20Luster%20Lakes%20Zone.mp3");
+precacheAudio(33, "BTC1AAZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A43%20-%20Aqua%20Arena%20Zone.mp3");
+precacheAudio(34, "BTC1CCZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A44b%20-%20Gigalopolis%20Zone%20%28Prerelease%29.mp3");
+precacheAudio(35, "BTC1SSZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A44a%20-%20Gigalopolis%20Zone.mp3");
+precacheAudio(36, "BTC1CCZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A45b%20-%20Robot%20Rave%20Zone%20%28Old%29.mp3");
+precacheAudio(-1, "Tutorial", "TutorialZone.mp3")
+precacheAudio(-2, "LVLSELECT", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/C36%20-%20Sonic%202%20Options%20%28Online%20Lobby%29.mp3");
+
+if(scene === "opencard"){
+if(mode === 1){
+    if(level === 0){
+    playAudio(30);
+    }
+    if(level === 1){
+        playAudio(30);
+        }
+        if(level === 2){
+            playAudio(31);
+            }
+            if(level === 3){
+                playAudio(31);
+                }
+                if(level === 4){
+                    playAudio(32);
+                    }
+                    if(level === 5){
+                        playAudio(32);
+                        }
+                        if(level === 6){
+                            playAudio(33);
+                            }
+                            if(level === 7){
+                                playAudio(33);
+                                }
+                                if(level === 8){
+                                    playAudio(34);
+                                    }
+                                    if(level === 9){
+                                        playAudio(34);
+                                        }
+                                        if(level === 10){
+                                            playAudio(35);
+                                            }
+                                            if(level === 11){
+                                                playAudio(35);
+                                                }
+                                                if(level === 12){
+                                                    playAudio(36);
+                                                    }
+                                                    if(level === 13){
+                                                        playAudio(36);
+                                                        }
+}
+
+if(mode === 0){
+if(level === 9){
+        
+    playAudio(0);
+};
+if(level === 10){
+        
+    playAudio(0);
+};
+if(level === 11){
+        
+    playAudio(7);
+};
+if(level === 24){
+playAudio(15);
+};
+if(level === 25){
+playAudio(15);
+};
+
+
+
+if(level === 0){
+        
+playAudio(1);
+
+};
+
+if(level === 1){
+        
+    playAudio(1);
+};
+if(level === 2){
+        
+    playAudio(2);
+};
+
+if(level === 3){
+    playAudio(3);
+    
+}
+if(level === 4){
+    playAudio(3);
+}
+if(level === 5){
+    playAudio(4);
+}
+
+if(level === 6){
+    playAudio(5);
+}
+if(level === 7){
+    playAudio(5);
+}
+if(level === 8){
+    playAudio(6);
+}
+
+if(level === 12){
+    playAudio(8);
+}
+if(level === 13){
+    playAudio(8);
+}
+if(level === 14){
+    playAudio(8);
+}
+
+if(level === 15){
+    playAudio(9);
+}
+if(level === 16){
+    playAudio(10);
+}
+if(level === 17){
+    playAudio(11);
+}
+
+if(level === 18){
+    playAudio(12);
+}
+if(level === 19){
+    playAudio(12);
+}
+if(level === 20){
+    playAudio(12);
+}
+
+if(level === 21){
+    playAudio(13);
+}
+if(level === 22){
+    playAudio(13);
+}
+if(level === 23){
+    playAudio(14);
+}
+}
+}
+
+if(scene === "opencard"){
+if(mode === 3){
+playAudio(-1);
+
+}
+}
+if(scene === "lvls"){
+
+    playAudio(-2);
+}
+
+
+
+
+
+
     
 draw = function(){
     cursor("default");
     if(keys[54]){
+//funny1 = true;
+//scene = "gottaremovethisinthefinalrelease";
     }
     
     if (imgIndex < images.length) {
