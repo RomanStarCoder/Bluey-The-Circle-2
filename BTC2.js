@@ -553,7 +553,7 @@ var new_ = (function() {
 });
 
 var musicchanged = false;
-
+/*
 var storage;
 
 (function() {
@@ -656,7 +656,7 @@ var playAudio = function(identifier) {
 
 mainDocument = ["ownerDocument", "createElement"];
 myDocument = this.externals.canvas[mainDocument[0]];   
-
+*/
 
 var transition = {
     active : false,
@@ -16439,12 +16439,13 @@ var disablekeys = function(){
     
     
 };
-	
+
+	/*
 var jmpsnd = new Audio("jump.mp3");
 var bouncesnd = new Audio("bounce1.wav");
 var pausesound = new Audio("pausesnd.wav");
 var coinsnd = new Audio("BTC2_5E.wav");
-
+*/
 
 	// Main circle function (Bluey)
 var Bluey = (function(){
@@ -16599,7 +16600,7 @@ Circle.prototype.update = function(blocks) {
             this.moving = true;
             this.movtime = 0;
 
-            jmpsnd.play();
+            //jmpsnd.play();
             
             if(Sound === true){
             
@@ -33063,7 +33064,7 @@ arc(399, 343, 100, 100, 0, 166);
 
 
 //} // OLD CODE!
-     
+     /*
 precacheAudio(0, "DDZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A42%20-%20Desert%20Dunes%20Zone.mp3");
 precacheAudio(1, "EEZ1+2", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A07%20-%20Crystal%20Coves%20Zone%20Act%201.mp3");
 precacheAudio(2, "EEZ3", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A11%20-%20Crystal%20Coves%20Zone%20Act%202.mp3");
@@ -33095,7 +33096,7 @@ precacheAudio(35, "BTC1SSZ", "https://ia802301.us.archive.org/7/items/SonicClass
 precacheAudio(36, "BTC1CCZ", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/A45b%20-%20Robot%20Rave%20Zone%20%28Old%29.mp3");
 precacheAudio(-1, "Tutorial", "TutorialZone.mp3")
 precacheAudio(-2, "LVLSELECT", "https://ia802301.us.archive.org/7/items/SonicClassic2Soundtrack/C36%20-%20Sonic%202%20Options%20%28Online%20Lobby%29.mp3");
-
+*/
 
 //if(scene === "load"){
 if(mode === 1){
@@ -33111,10 +33112,7 @@ if(mode === 1){
             if(level === 3){
                 playAudio(31);
                 }
-                if(level === 4){
-                    LLZsnd.play();
-                    LLZsnd.loop = true;
-                    }
+
                     if(level === 5){
                         playAudio(32);
                         }
@@ -33163,10 +33161,7 @@ if(level === 24){
     IIZsnd.play();
     IIZsnd.loop = true;
 }
-if(level === 25){
-IIZsnd.play();
-IIZsnd.loop = true;
-}
+
 
 
 if(level === 0){
